@@ -1,0 +1,778 @@
+* {
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "vazirmatn"; /* فونت فارسی */
+  src: url(../fonts/Vazirmatn[wght].woff2);
+}
+
+/* پایه و اساس استایل‌ها */
+/* تعریف رنگ‌های اصلی که در کل سایت استفاده می‌شوند */
+:root {
+  --color-primary: #ff5722; /* رنگ نارنجی برای دکمه‌ها و موارد مهم */
+  --color-secondary: #002b5b; /* رنگ آبی تیره برای هدر */
+  --color-text: #333; /* رنگ متن‌های معمولی */
+  --color-light: #fff; /* رنگ سفید */
+  --color-gray: #f5f5f5; /* رنگ خاکستری روشن برای پس‌زمینه */
+  --footer-bg: #1a1a1a;
+  --footer-text: #fff;
+}
+
+/* استایل‌های کلی بدنه سایت */
+body {
+  color: var(--color-text); /* رنگ متن‌ها */
+  line-height: 1.6; /* فاصله بین خطوط */
+}
+
+/* استایل‌های بخش هدر */
+/* نوار بالایی هدر - پیام خوش‌آمدگویی */
+.header__top-bar {
+  position: absolute;
+  padding: 10;
+  top: 0;
+  background-color: var(--color-secondary);
+  color: var(--color-light);
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  font-size: 14px;
+}
+
+/* قسمت اصلی هدر - شامل لوگو، جستجو و منوی کاربر */
+.header__main {
+  display: flex; /* چینش افقی المان‌ها */
+  justify-content: space-between; /* فاصله‌گذاری بین المان‌ها */
+  align-items: center; /* تراز عمودی وسط */
+  padding: 20px 40px;
+  background-color: var(--color-light);
+}
+
+/* استایل‌های لوگو */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* فاصله بین تصویر و متن لوگو */
+}
+
+.logo__image {
+  height: 35px;
+}
+
+.logo__text {
+  display: flex;
+  position: absolute;
+  top: 112;
+  right: 45;
+  font-size: 14px;
+}
+
+/* استایل‌های بخش جستجو */
+.search {
+  flex: 1; /* پر کردن فضای باقی‌مانده */
+  max-width: 600px; /* حداکثر عرض */
+  margin: 20px 10px;
+  position: relative; /* برای موقعیت‌دهی دکمه جستجو */
+}
+
+.search__input {
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid #ddd;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: vazirmatn;
+}
+
+/* دکمه جستجو که روی input قرار می‌گیرد */
+.search__button {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%); /* تراز عمودی دقیق */
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* استایل‌های منوی کاربر */
+.user-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-nav__login {
+  text-decoration: none;
+  color: var(--color-text);
+  font-size: 14px;
+}
+
+/* سبد خرید و شمارنده */
+.user-nav__cart {
+  position: relative; /* برای موقعیت‌دهی شمارنده */
+  text-decoration: none;
+}
+
+/* شمارنده تعداد محصولات در سبد خرید */
+.user-nav__cart-count {
+  position: absolute;
+  top: -8px;
+  right: 30px;
+  background-color: #002b5b;
+
+  color: var(--color-light);
+  font-size: 12px;
+  padding: 1px 7px;
+  border-radius: 100%; /* شکل دایره‌ای */
+}
+
+/* استایل‌های منوی اصلی */
+.main-nav {
+  background-color: var(--color-gray);
+  padding: 15px 40px;
+}
+
+.main-nav__list {
+  display: flex;
+  list-style: none; /* حذف نقطه‌های لیست */
+  gap: 40px;
+  justify-content: center;
+  align-items: center; /* ترازبندی عمودی آیتم‌ها */
+  list-style: none; /* حذف نقطه‌های لیست */
+}
+
+.main-nav__link {
+  text-decoration: none;
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: bold;
+  transition: color 0.3s; /* انیمیشن تغییر رنگ */
+}
+
+/* تغییر رنگ لینک‌ها هنگام hover */
+.main-nav__link:hover {
+  color: var(--color-primary);
+}
+
+/* لینک‌های ویژه با رنگ متفاوت */
+.main-nav__link--featured {
+  justify-content: center;
+  justify-items: center;
+}
+
+.user-nav__icon {
+  position: relative;
+  top: 5;
+}
+
+/* استایل‌های بخش قهرمان (hero) */
+.hero {
+  display: flex;
+  padding: 60px 40px;
+  background-color: var(--color-light);
+}
+
+.hero__content {
+  flex: 1;
+  padding-left: 60px;
+}
+
+.hero__text {
+  margin-bottom: 60px;
+}
+
+/* عنوان‌های بخش قهرمان */
+.hero__title {
+  font-size: 42px;
+  color: var(--color-secondary);
+  margin-bottom: 10px;
+}
+
+.hero__subtitle {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.hero__heading {
+  font-size: 36px;
+  color: #e64a19;
+  margin-bottom: 20px;
+}
+
+.hero__description {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* دکمه اصلی */
+.hero__button {
+  display: flex;
+  width: 220px;
+  height: 50px;
+  padding: 15px 30px;
+  gap: 10px;
+  background-color: #002b5b;
+  color: var(--color-light);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+/* بخش تصویر قهرمان */
+.hero__image {
+  display: flex;
+  position: absolute;
+  margin-right: 45%;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero__athlete {
+  max-width: 100%;
+  height: auto;
+}
+
+/* استایل‌های بخش ویژگی‌ها */
+.hero__features {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  gap: 30px;
+  top: 300px;
+  margin-right: 80%; /* تنظیم فاصله از سمت چپ */
+}
+
+/* هر کارت ویژگی */
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: #f8f9ff;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.feature__icon {
+  width: 70px;
+  height: 70px;
+  object-fit: contain; /* حفظ نسبت تصویر */
+}
+
+.feature__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.feature__number {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--color-secondary);
+}
+
+.feature__text {
+  font-size: 14px;
+  color: #666;
+}
+
+.hero__dots {
+  height: 100%;
+  width: 100%;
+  margin-top: 250px;
+  background-size: cover;
+}
+
+/* Banner Section */
+.banner {
+  display: flex;
+  padding: var(--spacing-base);
+}
+
+.banner__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* سه ستون */
+  direction: ltr; /* تغییر جهت */
+}
+
+.banner__item {
+  max-width: 50%;
+  margin-top: 10px;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--color-gray);
+}
+
+.banner__item--dark {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
+
+.banner__title {
+  margin-top: 280px;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.banner__text {
+  margin-bottom: 1.5rem;
+}
+
+.banner__button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-primary);
+  color: var(--color-light);
+  text-decoration: none;
+  border-radius: 0.5rem;
+}
+
+/* Fitness Section */
+.fitness {
+  width: 100%;
+  background-color: #f3e5f5;
+  padding: 3rem var(--spacing-base);
+  margin: 2rem 0;
+}
+
+.fitness__content {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.fitness__text {
+  flex: 1;
+  padding-left: 2rem;
+}
+
+.fitness__title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.fitness__button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #002b5b;
+  color: var(--color-light);
+  text-decoration: none;
+  border-radius: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Product Card */
+.product-card {
+  width: 100%;
+  background: var(--color-light);
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-card__badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--color-primary);
+  color: var(--color-light);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.product-card__image {
+  display: flex;
+
+  height: auto;
+}
+
+.product-card__info {
+  padding: 1rem;
+}
+
+.product-card__title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-card__price {
+  color: var(--color-primary);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.product-card__sizes {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.product-card__sizes span {
+  padding: 0.25rem 0.5rem;
+  background: var(--color-gray);
+  border-radius: 0.25rem;
+  font-size: 0.9rem;
+}
+
+/* Grid Sections */
+.offers__grid,
+.shoes__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: var(--spacing-base);
+}
+
+.offers__title,
+.shoes__title {
+  font-size: 1.75rem;
+  margin: 2rem var(--spacing-base);
+}
+
+/* بخش تخفیفات ویژه */
+.special-offers {
+  padding: 2rem;
+  background-color: #fff;
+}
+
+.special-offers__title {
+  text-align: right;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+.special-offers__slider {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+/* کامپوننت کارت محصول */
+.product-card {
+  flex: 0 0 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-card__image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-card__title {
+  padding: 1rem;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.product-card__price {
+  padding: 0 1rem 1rem;
+  margin: 0;
+  color: var(--primary-color);
+}
+
+/* بخش پرفروش‌ترین‌ها */
+.best-sellers {
+  padding: 2rem;
+}
+
+.best-sellers__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* کامپوننت کارت لباس */
+.outfit-card {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+}
+
+.outfit-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.outfit-card__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: #fff;
+}
+
+/* بنر کمپینگ */
+.camping-banner {
+  margin: 2rem;
+  height: 400px;
+  background-color: #2e7d32;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+  background-image: url("camping-bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.camping-banner__content {
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+/* بخش اخبار ورزشی */
+.sports-news {
+  padding: 2rem;
+}
+
+.sports-news__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* کامپوننت کارت خبر */
+.news-card {
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.news-card__image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.news-card__title {
+  padding: 1rem;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.news-card__button {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.news-card__button:hover {
+  background-color: #e64a19;
+}
+
+/* فوتر */
+.footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 4rem 2rem 2rem;
+}
+
+.footer__content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer__column {
+  padding: 0 1rem;
+}
+
+.footer__title {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+}
+
+.footer__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__item {
+  margin-bottom: 0.8rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.footer__item:hover {
+  color: var(--primary-color);
+}
+
+.footer__trust-symbols {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.footer__trust-image {
+  width: 80px;
+  height: auto;
+}
+
+.footer__bottom {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.footer__copyright {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* بنر اصلی دوچرخه */
+.bike-banner {
+  width: 100%;
+  min-height: 600px;
+  background-color: var(--background-color);
+  overflow: hidden;
+}
+
+.bike-banner__content {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.bike-banner__text-container {
+  flex: 1;
+  max-width: 500px;
+  text-align: right;
+  z-index: 2;
+}
+
+.bike-banner__title {
+  font-size: 2.5rem;
+  color: var(--text-color);
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+.bike-banner__subtitle {
+  font-size: 2rem;
+  color: var(--text-color);
+  margin: 0;
+  margin-bottom: 2rem;
+}
+
+.bike-banner__button {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--primary-color);
+  color: var(--button-text);
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+.bike-banner__button:hover {
+  background-color: var(--accent-color);
+}
+
+.bike-banner__button-icon {
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.bike-banner__image-container {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.bike-banner__image {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  object-fit: cover;
+}
+
+.bike-banner__line {
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+
+/* بخش خدمات و سابقه */
+.services {
+  background-color: var(--services-bg);
+  padding: 3rem 0;
+}
+
+.services__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.services__history {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.services__history-text {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.services__items {
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+}
+
+.services__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.services__icon {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.services__title {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
